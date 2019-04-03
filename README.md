@@ -94,6 +94,15 @@ Javascript diferencia mayúsculas de minúsculas, de modo que si tiene una varia
 
 Javascript es un lenguaje dinámicamente tipado, sin embargo en las últimas versiones se puede definir tipos de datos. Por defecto los tipos definidos en el intérprete son:
 
+Para saber qué tipo de dato es una determinada variable podemos usar la palabra reservada **typeof**
+
+```js
+typeof 11 // number
+typeof 'Hola mundo' // string
+typeof [] // object
+typeof {} // object
+```
+
 - **Numeros**
 
 - **Strings**
@@ -125,3 +134,159 @@ console.log(miTexto)
 
 
 La palabra reservada **typeof** devuelve el tipo de dato que tiene asignada una variable.
+
+
+## Asignación por valor y referencia
+
+Por defecto los tipos de datos primitivos en JS son  asignaciones por valor
+
+```js
+let number1 = 11
+let number2 = 20
+number2 = 33
+console.log(number1) // En este caso el valor de la variable number1 no cambia, por lo que la asignación es por valor
+```
+
+La asignación por referencia la observamos en los tipo de datos objetos, como *arrays* y *objetos*, por ejemplo:
+
+```js
+let numbers = [1,2,3,4]
+let numbers_copy = numbers
+numbers_copy.push(5)  // Le agregamos un nuevo elemento a numbers_copy
+console.log(numbers) // En este caso la asignación es por referencia, es decir, si cambio un valor de una variable se verá reflejada en la otra
+
+// La salida es [1,2,3,4,5]
+```
+
+
+
+## Operadores
+
+### Operadores de asignación 
+
+Los operadores de asignación asignan un valor a una variable
+
+* `=`
+* `+=`
+* `-=`
+* `/=`
+* `*=`
+
+### Operadores de comparación
+
+* `==`        Compara valor
+* `===`       Compara valor y tipo de dato
+* `!=`        Diferente de
+* `!==`
+* `>`
+* `<`
+* `>=`
+* `<=`
+
+### Operadores unarios
+
+Son aquellos que requieren sólo un dato
+
+- **typeof**        Muestra el tipo de dato        
+- **!**             Negación
+
+
+### Operadores aritméticos
+
+- `+`     Suma
+- `-`     Resta
+- `*`     Multiplicación
+- `/`     División
+- `%`     Módulo (Residuo de la división)
+- `++`    Incremento
+- `--`    Decremento
+
+
+**postincremento / postdecremento** 
+
+```js
+let number = 5
+number++
+// El incremento ocurre después, es decir cuando vuelva a llamarse la variable
+
+++number
+// El incremento se hace al momento de llamar la variable
+
+// Lo mismo ocurre para el decremento
+```
+
+### Operador ternario
+
+Un operador ternario es un operador que toma tres argumentos. Los argumentos y el resultado puede ser de diferentes tipos.
+
+`expresion ? si es verdadero : si es falso`
+
+```js
+let age = prompt('Dime tu edad')
+
+let isAdult = (age >= 18) ? 'Eres mayor de edad' : 'Eres menor de edad'
+
+console.log(isAdult)
+```
+
+### Operadores Corto Circuito
+
+```js
+let a = null || 'Hola'
+console.log(a) // Devuelve 'Hola'
+let b = null  && 'Hola'
+console.log(b) // Devuelve null
+```
+
+
+## Números
+
+- **toFixed()** Especifica el número de decimales, por ejemplo `number.toFixed(n)`
+
+- **parseInt()** Convierte un valor de texto a entero
+- **parseFloat()** Convierte texto a número decimal
+- **NaN** (Not a Number) Cualquier operación matemática que no devuelva un número
+
+El uso del objeto **Math** `Math.ceil(10.7)`
+
+- **.floor()** Redondea un número al menor (Piso)
+
+- **.ceil()** Redondea un número al mayor (Techo)
+- **.round()** Redondea un número
+- **.random()** Devulve un número aleatorio entre 0 y 1
+
+
+## Strings
+
+Son cadenas de texto
+
+- **.length** Devulve el tamaño del texto, `length` es una propiedad del texto
+
+- **.trim()**           Quita los espacios en blanco al inicio y al final
+- **.toUpperCase()**    Convierte todo el texto a mayúsculas
+- **.toLowerCase()**    Convierte el texto a minúsculas
+
+- **indexOf(string)**  `variable.indexOf('r')` Con esta función podemos encontrar la posición en un string dada un valor a buscar
+
+- **lastIndexOf(search)** Encuentra el último elemento asociado por el parámetro de búsqueda
+
+**_Métodos incluidos en ES6_**
+
+- **includes(search)**  `variable.includes('Hola')` Este método devuelve un valor booleano si encuentra el valor a buscar
+
+- **startWith(search)** Verifica que el una variable empiece coon el parámetro indicado
+
+- **endWith(search)** Verifica que la cadena de texto finalice con el parámetro indicado
+
+
+*__Métodos para manipular strings__*
+
+- **replace('search', 'replace')** Reemplaza un string en la cadena de texto
+
+- **split(',')** Separa las cadenas en un arreglo de datos que estén separadas por coma (El valor puede ser el que le indiquemos)
+
+- **substring(start, end)** Devuelve la cadena de texto desde la posición indicada. Si *end* es negativo extrae hacia atrás
+
+- **substr(posicion, cantidad_carateres)** Extrae una cantidad de caracteres indicando la posición inicial y la cantidad de caracteres que quiero retornar
+
+- **slice(start, end)** Extrae una porción de texto indicando la posicion inicial y final del caracter para tomar sólo lo que se encuentre dentro de esos valores.
