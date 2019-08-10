@@ -290,3 +290,30 @@ Son cadenas de texto
 - **substr(posicion, cantidad_carateres)** Extrae una cantidad de caracteres indicando la posición inicial y la cantidad de caracteres que quiero retornar
 
 - **slice(start, end)** Extrae una porción de texto indicando la posicion inicial y final del caracter para tomar sólo lo que se encuentre dentro de esos valores.
+
+
+
+## Condicionales
+
+Los condicionales son estructuras que ejecutan un bloque de código dependiendo de una condición (Comparación entre dos valores)
+
+```js
+let a = 5, b = 2;
+if (a > b){
+    console.log("El número es mayor");
+} else {
+    console.log("El número es menor");
+}
+```
+
+Scope (Alcance) de las variables
+
+```js
+// Bloque de código
+{
+    // Scope de Javascript
+    let variable = 12;
+    console.log(variable);
+}
+console.log(variable); // Mostrará error, porque la variable no puede ser accedida
+```
