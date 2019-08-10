@@ -317,3 +317,121 @@ Scope (Alcance) de las variables
 }
 console.log(variable); // Mostrará error, porque la variable no puede ser accedida
 ```
+
+
+Las condiciones puede ser anidadas y operadas con operadores lógicos `&&` *(and)* y `||` *(or)*, por ejemplo
+
+```js
+let edad = 18;
+if (edad >= 15 && edad < 25){
+    console.log("Eres joven");
+} else if (edad >= 25 ){
+    console.log("Eres adulto");
+}
+```
+
+### Truthy and Falsy
+
+Son valores que son considerados falsos y verdaderos por Javascript
+
+- Falsy (Se comportan como falsos)
+    - 0
+    - ""
+    - NaN
+    - undefined
+    - null
+- Truthy (Se comportan como verdaderos)
+    - String no vacio
+    - Números diferentes de cero
+    - Arrays
+    - Objeto
+
+
+
+### Switch
+
+Es una estructura condicional también, que nos permite hacer comparaciones dependiendo del caso escogido. Su estructura es la siguiente.
+
+```js
+let answer = prompt(`La capital de Colombia es:
+a. Bogotá
+b. Lima
+c. Madrid
+d. México
+e. La paz`).toLowerCase().trim();
+
+switch (answer){
+    case 'a':
+        console.log("Respuesta correcta");
+        break;
+    case 'b':
+        console.log("Incorrecto");
+        break;
+    default:
+        console.log("Estas equivocado");
+        break;
+}
+```
+
+El switch es útil cuando se quiere comprobar cada uno de los valores.
+
+
+
+## Ciclos
+
+Los ciclos son elementos que nos permiten repetir el código que esté dentro de los bloques mientras una condición es verdadera.
+
+## Ciclo For
+
+Este ciclo tiene tres sentencias incluidas: 
+- La declaración de variable
+- El condicional
+- La variable de incremento o decremento
+
+```js
+// Múltiplos de 7 de 1 a 100
+for (let i = 1; i<= 100; i++){
+    if (i % 7 === 0)  console.log(i);
+}
+```
+
+
+- **break y continue**
+
+La palabra clave `break` permite salir del ciclo, y la sentencia `continue` salta a la siguiente iteracion
+
+A continuación se muestra un ejemplo de mostrar los números impares usando continue
+
+```js
+// Números impares del 0 al 100
+for (let i = 1; i<= 100; i++){
+    if (i % 2 === 0)  continue;
+    console.log(i);
+}
+```
+
+## Ciclo `while` y `do while`
+
+Estos ciclos se ecutan mientras una condición sea verdadera. Con el cicl **while** la condición se evalúa al inicio, por lo que si la condición es falsa, no entrará. Por el contrario con el ciclo **do while** la condición se evalúa al final, de modo que se garantiza que el código se ejecute al menos una vez.
+
+```js
+// Imprime los números del 0 al 9
+let i = 0;
+while (i < 10) {
+    console.log(i);
+};
+
+// Imprime los números del 0 al 9
+let a = 0;
+do {
+    console.log(a);
+} while (a < 10); 
+```
+
+
+
+## Funciones 
+
+**¿Qué son las funciones?**
+
+Las funciones son un trozo código reutilizable en el que hay un conjunto de intrucciones.
