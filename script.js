@@ -70,3 +70,89 @@ do {
     console.log(a);
     a++;
 } while (a < 10); 
+
+
+// ------- Funciones---------
+// Declaración de la función
+function saludar(persona){
+    return `Hola ${persona}`;
+}
+
+// Ejecutar la función
+console.log(saludar("Juan Magallán"));
+
+
+// Expresión con funciones de flecha
+const saludo = (persona, sexo) => {
+    let saludo = sexo == 'm'
+                ? 'Bienvenido'
+                : 'Bienvenida';
+    return `${saludo} a tu futuro, ${persona}`;
+}
+
+console.log(saludo('Johan', 'm'));
+
+
+// Operador rest
+const sumarNumeros = (...numeros) => {
+    console.log(numeros); // Muestra un array
+    let resultado = 0;
+    for (let i = 0; i < numeros.length; i++){
+        resultado += numeros[i];
+    }
+    return resultado;
+}
+let datos = sumarNumeros(1,2,3,4,5,6,7);
+console.log(`Suma: ${datos}`);
+
+// -- Funciones primera clase ----
+const c = console.log;
+const multiplicar = (a,b) => a*b;
+
+c(multiplicar(3,4));
+
+/* function sumar(x){
+    return function(y){
+        return x + y;
+    }
+} */
+
+const sumar = x => y => x+y;
+c(sumar(5)(2));
+
+const saludos = ((saludo, persona) => `${saludo} ${persona}`)('Hola', 'Juan');
+console.log(saludos)
+
+setTimeout(() => {
+    console.log("Hola funcion anónima")
+}, 2000)
+
+
+
+// Closure
+function aumentar(){
+    let no_access = 0;
+    return function(){
+        no_access++;
+        console.log(no_access);
+    }
+}
+
+aumentar()();
+const incrementar = aumentar();
+incrementar();
+incrementar();
+incrementar();
+incrementar();
+//console.log(no_access)
+ 
+// ----- Objetos ----
+let user = {
+    nombre: 'Rick',
+    edad: 54,
+    getEdad(){
+        console.log(`La edad es ${this.edad}`);
+    }
+}
+
+user.getEdad();

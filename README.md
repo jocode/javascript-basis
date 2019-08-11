@@ -435,3 +435,168 @@ do {
 **¿Qué son las funciones?**
 
 Las funciones son un trozo código reutilizable en el que hay un conjunto de intrucciones.
+
+Las entradas se llaman `argumentos` y las salidas se les denominan `valor de retorno`
+
+Las funciones funcionan de la siguiene forma
+
+```js
+//Declarción de una función
+nombreFuncion(argumento1, argumento2,...){
+    //  Bloque de código
+}
+
+// Llamada a la funcion
+nombreFuncion(miArg1, miArg2, ...);
+```
+
+```js
+// Declaración de la función
+function saludar(persona){
+    return `Hola ${persona}`;
+}
+
+// Ejecutar la función
+console.log(saludar("Juan Magallán"));
+```
+
+Cuando las funciones están dentro de un objeto se le denomina **_métodos_**
+
+### Formas de declarar una función
+
+- **Declaración**
+
+```js
+function saludar(persona){
+    return `Hola ${persona}`;
+}
+```
+
+- **Expresión**
+No recomendado
+```js
+var nombreFuncion = function(persona){
+    return `Hola ${persona}`;
+}
+```
+
+- **Funciones de flecha (Recomendado desde ES6)**
+Recomendado desde ES6 (Ecma Script 6)
+
+```js
+const nombreFuncion = (parametros)=>{
+    // Instrucciones de la funcion
+    return valor;
+}
+```
+
+Si la función de flecha retorna directamente un valor, sin intrucciones adicionales, la sintaxis se reduce:
+
+```js
+const sumar(a,b) => a+b
+```
+
+
+### Parámetros y argumentos
+
+- **Parámetros**
+Son variable locales que se definen en la declaración de la función, se pueden asignar valores por defecto a los parámetros
+
+- **Argumentos**
+Valores asignados a los parámetros al ejecutar la función.
+    - Si ha más argumentos que parámetros, los adicionales se ignoran.
+    -Si hay menos argumentos que parámetros
+        - Los faltantes son `undefined` a menos que tengan un valor por defecto
+
+
+### Parámetros rest (spread operator)
+
+En Javascript podemos pasar varios parámetros sin indicar la cantidad utilizando el operador de tres puntos `...parametro`
+
+```js
+const sumarNumeros = (...numeros) => {
+    console.log(numeros); // Muestra un array
+    let resultado = 0;
+    for (let i = 0; i < numeros.length; i++){
+        resultado += numeros[i];
+    }
+    return resultado;
+}
+sumarNumeros(1,2,3,4,5,6,7);
+```
+
+
+### Las funciones son ciudadanos de primera clase
+- Pueden ser almacenadas en variables o constantes `función por expresion const c = console.log`
+- Puede ser pasadas como argumentos de otra función `callback`
+- Pueden ser retornadas por otra función `closures`
+- Puesen tener métodos o propiedades `POO`
+
+
+### Tipos de Funciones
+
+- **Funciones puras**
+No causa un efecto secundario, y siempre devuelve los mismos valores para los mismos parámetros
+
+- **Funciones autoinvocada**
+Se ejecutan solas
+
+```js
+const saludar = ((saludo, persona) => `${saludo} ${persona}`)('Hola', 'Juan');
+console.log(saludar)
+```
+
+- **Funciones nombradas y anonimas**
+Estas funciones no sele especifica nombres y funcionan generalmente como callbacks
+
+```js
+setTimeout(() => {
+    console.log("Hola funcion anonima")
+}, 2000)
+```
+
+
+### Scope
+
+Es el contexto en el que una variable existe.
+
+- `this`
+    - Representa al objeto del cual se ejecuta una función
+    - Las arrow functions permiten acceder al this superior dentro del closure (lexical this)
+
+
+```js
+// Objeto user
+let user = {
+    nombre: 'Rick',
+    edad: 54,
+    getEdad(){
+        console.log(this.edad);
+    }
+}
+
+user.getEdad();
+```
+
+### Closure
+
+Son funciones internas a las que podemos llegar a valores externos
+
+```js
+function aumentar(){
+    let numero = 0;
+    return function(){
+        numero++;
+        console.log(numero);
+    }
+}
+
+aumentar()();
+const incrementar = aumentar();
+incrementar();
+incrementar();
+incrementar();
+incrementar();
+```
+
+Esto tiene una gran ventaja porque la variable está protegida, no se puede acceder desde fuera por el scope.
