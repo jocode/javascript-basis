@@ -156,3 +156,105 @@ let user = {
 }
 
 user.getEdad();
+
+
+// Arreglos
+let arreglo = ['Buenas', 2, true, [2,5,6], {}]
+console.log(arreglo[3]);
+console.log(arreglo.length)
+
+
+// Desestructuración de arrays en JS
+let frutas = ['Manzana', 'Pera', 'Banano', 'Fresa', 'Kiwi', 'Mango', 'Mandarina'];
+// Variables que tienen cada valor
+let [f1, f2, f3, f4, f5] = frutas;
+console.log(f1)
+
+
+// ---- Trabajar con arrays -------
+let arr = [1,2,3,4];
+// Aregar elementos al final
+arr.push(5);
+console.log(arr);
+// Quitar el ultimo elemento
+arr.pop();
+console.log(arr);
+// Agregar el elemento al inicio
+arr.unshift('Nuevo');
+console.log(arr);
+// Elimina el primer valor
+arr.shift();
+arr.splice(2,0,'Colombia', 'Peru');
+console.log(arr)
+console.log(arr.slice(2,3))
+
+// -- Reverse ---
+let reverse = "Hola mundo".split('').reverse().join('');
+console.log(reverse)
+const reverseText = string => string.split('').reverse().join('');
+console.log(reverseText('Camilo'))
+
+let letras = ['B','A','C','Z'];
+console.log(letras.sort())
+
+// ---- Ordenar números ------
+let numbers = [1,6,301,270,360,9,11];
+console.log(numbers.sort())
+console.log(numbers.sort((a,b)=> a - b))
+
+// Unión
+console.log(numbers.join(' '))
+let numbers2 = [2,76,34,64];
+let combinacion = numbers.concat(numbers2);
+console.log(combinacion);
+console.log(numbers.find(number => number > 100))
+
+
+// --- Eliminar elementos duplicados----
+let duplicados = [2,6,2,4,7,6,10,54,34,12,6,10]
+duplicados.sort((a,b) => a-b);
+console.log(duplicados);
+// Convertir un objeto en Array usando spread operador
+let no_duplicados = [... new Set(duplicados)];
+console.log(no_duplicados);
+
+// Función tipo llave que elimina los duplicados
+const removeDuplicates = arr => [...new Set(arr)];
+
+frutas = ['Mango', 'Manzana', 'Pera', 'Fresa', 'Banano', 'Papaya'];
+
+console.log(frutas.every(elemento => elemento.includes('a'))); // Devuelve true
+
+numbers = [5,6,7,3,4,9];
+console.log(numbers.map(elemento => elemento * elemento));
+
+let mayores_5 = numbers.filter(elemento => elemento > 5);
+console.log(mayores_5);
+
+let suma = numbers.reduce((a,b) => a+b);
+console.log(suma);
+
+
+// Objetos
+let perro = {
+    nombre: 'Layca',
+    edad: 3,
+    color: 'Negro',
+    sexo: 'Macho',
+    vacunas: true,
+    correr(){
+        console.log(`${this.nombre} corre`);
+    },
+}
+
+console.log(perro.nombre);
+perro.correr();
+
+// Eliminar propiedades de un objeto
+delete perro.edad;
+console.log(perro);
+// Añadir propiedades
+perro.edad = 3;
+console.log(perro);
+
+

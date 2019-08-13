@@ -600,3 +600,419 @@ incrementar();
 ```
 
 Esto tiene una gran ventaja porque la variable está protegida, no se puede acceder desde fuera por el scope.
+
+
+## Arrays
+
+Lista de valores separados por coma y encerrados entre corcheres `[]`
+
+```js
+let arreglo = ['Buenas', 2, true, [2,5,6], {}]
+
+// Mostrar item en la posición 3
+console.log(arreglo[3]);
+// Mostrar el tamaño del arreglo
+console.log(arreglo.length);
+```
+
+### Desestructuración de arrays
+
+Es un concepto que nos permite tomar estructuras de datos y dividirlas
+
+
+```js
+// Desestructuración de arrays en JS
+let frutas = ['Manzana', 'Pera', 'Banano', 'Fresa', 'Kiwi', 'Mango', 'Mandarina'];
+// Variables que tienen cada valor
+let [f1, f2, f3, f4, f5] = frutas;
+console.log(f1)
+console.log(f2)
+console.log(f3)
+console.log(f4)
+console.log(f5)
+```
+
+### Agregar y quitar elementos en un array
+
+- **Al final**
+    - **.push(value)**
+    Agrega un nuevo elemento al final del arreglo
+    - **.pop()**
+    Quita y devuelve el último elemento del arreglo
+- **Al inicio**
+    - **.unshift(value)**
+    Agrega un nuevo elemento al inicio del array. Retorna el nuevo length
+    - **.shift()** Elimina el primer elemento del arreglo
+- **Posición personalizada**
+    - **.splice(startIndex, deleteQuantity, value1, value2,..)**
+    Agrega elementos a un array dando la posición de inicio y la cantidad de valores a eliminar y devuelve los elementos eliminados
+    - **.slice(start, [,end])**
+    Extrae en un nuevo array los valores desde *[start]* hasta *[end -1]*. No modifica el array original 
+
+```js
+let arr = [1,2,3,4];
+// Aregar elementos al final
+arr.push(5);
+// Quitar el ultimo elemento
+arr.pop();
+
+// Agregar el elemento al inicio
+arr.unshift('Nuevo');
+// Elimina el primer valor
+arr.shift();
+
+// Agregar elementos en una posición
+arr.splice(2,0,'Colombia', 'Peru');
+// Mostrar elementos de una posición en adelante
+console.log(arr.slice(2,3))
+```
+
+### Ordenar arrays
+
+- **sort(callback)**
+Nos permite ordenar un array (Los ordena teniendo en cuenta como si fuera strings. Para ordenar números no los ordena correctamente)
+
+```js
+let letras = ['B','A','C','Z'];
+console.log(letras.sort())
+```
+
+Para ordenar números usamos el siguiente algoritmo.
+
+```js
+// Ordenar numeros de menor a mayor
+let numbers = [1,6,301,270,360,9,11];
+console.log(numbers.sort())
+console.log(numbers.sort((a,b)=> a - b))
+```
+
+
+- **reverse()**
+Invierte el orden deun arreglo, el ultimo lo coloca de primero y así sucesivamente.
+
+```js
+let reverse = "Hola mundo".split('').reverse().join('');
+console.log(reverse)
+```
+
+### Unir arrays, convertir arraya a strings
+
+- **.join(separador)**
+Convierte un array en un string
+
+```js
+let numbers = [1,6,301,270,360,9,11];
+numbers.sort((a,b)=> a - b)
+// Une el array en un string separado por espacio en blanco
+console.log(numbers.join(' '))
+```
+
+- **.concat()**
+Recibe como parámetro un array o una lista y los junta en un solo arreglo. No modifica el array original, crea un nuevo array.
+
+```js
+let numbers = [1,6,301,270,360,9,11];
+let numbers2 = [2,76,34,64];
+let combinacion = numbers.concat(numbers2);
+console.log(combinacion);
+```
+
+### Encontrar elementos
+
+- **.indexOf(value)**
+Encuentra la posición del elemento en arreglo. Devuelve `-1` si no encuentra el elemento. 
+- **.find(callback)**
+Encuentra el primer elemento que coincida con el callback
+
+```js
+let numbers = [1,6,301,270,360,9,11];
+// Devuelve el primer elemento con el número mayor a 100 (Usando funciones de flecha)
+console.log(numbers.find(number => number > 100))
+```
+- **.findIndex(callback)**
+Este método funciona igual que el anterior, con la diferencia que no devuelve el valor si no el índice en el array.
+
+
+### Eliminar elementos duplicados de un Array
+
+Para eliminar los elementos repetidos usamos el elemento set, por ejemplo.
+
+**spread operator** `...`
+
+```js
+// --- Eliminar elementos duplicados----
+let duplicados = [2,6,2,4,7,6,10,54,34,12,6,10]
+duplicados.sort((a,b) => a-b);
+console.log(duplicados);
+// Convertir un objeto en Array usando spread operador
+let no_duplicados = [... new Set(duplicados)];
+console.log(no_duplicados);
+```
+
+
+### Objeto Math con arrays
+
+El objeto `Math` es para matemáticas
+
+```js
+Math.floor(2,3); // Redondea el número a 2
+Math.min(10,4,3,1,6); // Devuelve el número más pequeño de una lista de números
+Math.max(10,4,3,1,6); // Devuelve el número más grande de una lista de números
+```
+
+El problema con esto es que recibe una lista de números y no un array. Sin embargo el spread operator resulta de mucha utilidad aquí también. 
+
+```js
+let numbers = [10,4,3,1,6];
+// Usando el spread operator.
+Math.min(...numbers);
+```
+
+
+### Recorrer un array
+
+- **for**
+
+```js
+let arr = ['a','b','c','d','f'];
+for (let i = 0; i < arr.length; i++){
+    console.log(arr[i]);
+}
+``` 
+
+- **for of**
+Es ciclo similar a en otros lenguajes que es util para la iteración de objetos.
+
+```js
+let frutas = ['Mango', 'Manzana', 'Pera', 'Fresa', 'Banano', 'Papaya'];
+for (let fruta of frutas){
+    console.log(fruta);
+}
+```
+
+
+- **.forEach(callback)**
+Es un método más complejo, pero muy útil.
+
+```js
+let frutas = ['Mango', 'Manzana', 'Pera', 'Fresa', 'Banano', 'Papaya'];
+frutas.forEach( (elemento, index) => {
+    console.log(index + ': '+elemento);
+})
+```
+
+- **.some(callback)**
+Recorre todo el elemento y devuelve `true` si hay alguna coincidencia
+
+```js
+let frutas = ['Mango', 'Manzana', 'Pera', 'Fresa', 'Banano', 'Papaya'];
+
+console.log(frutas.some(elemento => elemento === 'Manzana')); // Devuelve true
+```
+
+
+- **.every(callback)**
+Verifica si todos los elementos tienen alguna coincidencia en común
+
+```js
+let frutas = ['Mango', 'Manzana', 'Pera', 'Fresa', 'Banano', 'Papaya'];
+
+console.log(frutas.every(elemento => elemento.includes('a'))); // Devuelve true
+```
+
+- **.map(callback)**
+Transforma todos los elementos del array. Estos métodos automáticamente crean un array, no hay que crearlos como en los anteriores.
+
+En el siguiente ejemplo, elevamos al cuadrado cada elemento
+```js
+let numbers = [5,6,7,3,4,9];
+console.log(numbers.map(elemento => elemento * elemento));
+```
+
+- **.filter()**
+Filtran los elementos que cumplan con la condición que esté en el callback
+
+```js
+let numbers = [5,6,7,3,4,9];
+let mayores_5 = numbers.filter(elemento => elemento > 5);
+console.log(mayores_5);
+``` 
+
+- **reduce(callback)**
+Reduce todos los elementos a un único valor. Éste modo compara de dos en dos.
+
+```js
+let numbers = [5,6,7,3,4,9];
+let suma = numbers.reduce((a,b) => a+b);
+console.log(suma);
+```
+
+
+## Objetos 
+
+Un objeto es una estructura de datos y es muy importante en Javascript (Practicamente todo javascript funciona con los objetos). Los objetos imitan el comportamiento en el mundo real (Tienen propiedades y características). Y se escribe de la siguiente forma:
+
+```js
+{
+    propiedad: valor,
+    propiedad2: valor2,
+    propiedad3: valor3,
+    metodo(){
+        // Código del método
+    }
+}
+```
+
+```js
+let perro = {
+    nombre: 'Layca',
+    edad: 3,
+    color: 'Negro',
+    sexo: 'Macho',
+    vacunas: true,
+    correr(){
+        console.log(`${this.nombre} corre`);
+    },
+}
+
+console.log(perro.nombre);
+perro.correr();
+```
+
+
+### Propiedades de los objetos
+
+Las propiedades de los objetos por conveniencia deben colocarse como se nombran las variables, sin caracteres especiales ni iniciar con números
+
+```js
+let user = {
+    'nom-bre': 'Juanito',
+    apellido: 'Marroquin'
+}
+console.log(user['nom-bre']) // Accediendo como si fuera array
+console.log(user.apellido)
+``` 
+
+
+### Agregar y quitar propiedades de un objeto
+
+- **delete()**
+Borra una propiedad de un objeto, es un operador unario.
+
+
+```js
+let perro = {
+    nombre: 'Layca',
+    edad: 3,
+    color: 'Negro',
+    sexo: 'Macho',
+    vacunas: true,
+    correr(){
+        console.log(`${this.nombre} corre`);
+    },
+}
+
+delete perro.edad
+```
+
+- **agregar propiedades**
+Para añadir propiedades a un objeto, se usa de la misma forma como si se accediera, con la notación de punto o corchetes.
+
+```js
+let perro = {
+    nombre: 'Layca',
+    color: 'Negro',
+    sexo: 'Macho',
+    vacunas: true,
+    correr(){
+        console.log(`${this.nombre} corre`);
+    },
+}
+perro.edad = 3;
+perro['feliz'] = true;
+```
+- **.hasOwnProperty()**
+- **Object.getPrototypeOf(`property`)**
+Obtiene el tipo de dato de la propiedad
+
+> Desde el momento que se coloque un punto, el elemento es un objeto.
+
+```js
+console.log('Hola mundo'.length); // Objeto
+console.log('Hola mundo'.toUpperCase());
+
+Object.getPrototypeOf('Hola mundo');
+```
+
+Los prototipos `prototype` son moldes para crear nuevos objetos.
+
+- **in**
+El operador `in` permite verificar si el objeto tiene una propiedad, devuelve `true` si el objeto contiene la propiedad.
+
+```js
+console.log('nombre' in perro);
+console.log('edad' in perro);
+```
+
+Se puede recorrer un objeto usando `in`
+
+```js
+for (let property in perro){
+    console.log(property);
+}
+
+Object.prototype.patas = 4;
+
+for (let property in perro){
+    if (perro.hasOwnProperty(property)) console.log(property);
+}
+```
+
+
+### Mutabilidad y copiado de objetos
+
+- **inmutables** No pueden variar
+
+La **mutabilidad** son asignados por referencia, no por valor. *Todos los valores primitivos son inmutables (El dato original nunca cambia)*.
+
+Los objetos son mutables, si se cambia la propiedad de un objeto, esa propiedad se asigna al objeto original.
+
+> Los primitivos se asignan por valor y los objetos por referencia. 
+> **Asignación por valor** NO están encadenados, cambia uno y no cambia el otro.
+> **Asignación por referencia** Están encadenados, si el uno cambia, el otro cambia.
+
+
+Para crear una copia de un objeto sin alterar el objeto original. **Object.assign({}, object)**
+
+```js
+let perro2 = Object.assign({}, perro);
+```
+
+### Recorrer un objeto
+
+- **for in**
+Devuelve los nombres de las propiedades de un objeto. Pero devuelve también las propiedades en la cadena de prototipos.
+
+- **for of**
+NO recorre un objeto, porque un objeto no tiene índices, es decir, no es iterable (for of funciona sólo para objetos iterables)
+
+- **Object.entries()**
+Devuelve como arrays, cada una de las entradas del objeto [propiedad, valor]
+
+```js
+Object.entries(perro);
+```
+
+- **Object.keys()**
+Devuelve las `propiedades` del objeto
+
+```js
+Object.keys(perro);
+```
+
+- **Object.values()**
+Devuelve los `valores` del objeto
+
+```js
+Object.values(perro);
+```
