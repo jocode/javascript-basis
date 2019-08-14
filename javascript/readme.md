@@ -221,3 +221,28 @@ function saludo(name){
 
 saludo("Johan Mosquera");
 ```
+
+
+## ¿Qué es un Callback?
+
+Una función que se pasa por parámetro a otra función, conceptualmente se llama función de orden superior, concepto del paradigma de la programación funcional
+
+El parámetro de la función `click` no es un valor o una variable, sino una función. Cuando una función se pasa como parámetro a ora función, se llama `callback`
+
+```js
+var button = document.getElementById("boton");
+button.addEventListener('click', function(){
+    alert('Dió  click en el botón');
+});
+```
+
+Otro ejemplo típico: Procesar un array
+
+```js
+var zFighters = ['Goku', 'Vegeta', 'Gohan', 'Piccolo'];
+zFighters.forEach(function(name, index){
+    console.log(index+1 + '. ' + name);
+});
+```
+
+*Para más información ver callbackhelp.com*
