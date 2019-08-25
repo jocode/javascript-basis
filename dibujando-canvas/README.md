@@ -58,3 +58,21 @@ lienzo.lineTo(200,200); // Trazar una línea
 lienzo.stroke(); // Pinta la línea
 lienzo.closePath(); // Indica que termina el dibujo
 ```
+
+En javascript no importa si coloca la función de último, automáticamente internamente el lenguaje coloca de primero las funciones y las variables permitiendo llamarlas en cualquier lado del script.
+
+
+Para dibujar otros tipo de formas usando canvas consultar [Dibujando formas con canvas](https://developer.mozilla.org/es/docs/Web/Guide/HTML/Canvas_tutorial/Dibujando_formas) de *MDN*
+
+
+## Eventos y formularios en Javascript
+
+Los eventos son funciones que suceden cuando algo ocurre,  sucesos cómo un click, pulsar una tecla, colocar el mouse sobre un botón, etc.
+
+Recuerda:
+
+Cuando queremos enviar información a un servidor podemos usar un formularios
+
+En JavaScript puedes agregar un manejador de eventos con `element.addEventListener('event', function)`
+
+- **Detectar eventos del teclado con JavaScript**
